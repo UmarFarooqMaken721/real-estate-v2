@@ -43,8 +43,8 @@ export const categories = ["All", "Villa", "Apartment", "Penthouse"]
 export const projectsData = [
   {
     title: "Skyline Haven",
-    price: "$250,000",
-    priceVal: 250000,
+    price: "Rs. 2.5 Crore",
+    priceVal: 25000000,
     location: "Lahore",
     image: project_img_1,
     category: "Apartment",
@@ -63,8 +63,8 @@ export const projectsData = [
   },
   {
     title: "Vista Verde",
-    price: "$380,000",
-    priceVal: 380000,
+    price: "Rs. 3.8 Crore",
+    priceVal: 38000000,
     location: "Islamabad",
     image: project_img_2,
     category: "Villa",
@@ -83,8 +83,8 @@ export const projectsData = [
   },
   {
     title: "Serenity Suites",
-    price: "$185,000",
-    priceVal: 185000,
+    price: "Rs. 1.85 Crore",
+    priceVal: 18500000,
     location: "Karachi",
     image: project_img_3,
     category: "Apartment",
@@ -103,8 +103,8 @@ export const projectsData = [
   },
   {
     title: "Central Square",
-    price: "$420,000",
-    priceVal: 420000,
+    price: "Rs. 4.2 Crore",
+    priceVal: 42000000,
     location: "Lahore",
     image: project_img_4,
     category: "Penthouse",
@@ -123,8 +123,8 @@ export const projectsData = [
   },
   {
     title: "Golden Gate Villa",
-    price: "$550,000",
-    priceVal: 550000,
+    price: "Rs. 5.5 Crore",
+    priceVal: 55000000,
     location: "Islamabad",
     image: project_img_5,
     category: "Villa",
@@ -143,8 +143,8 @@ export const projectsData = [
   },
   {
     title: "Aura Penthouses",
-    price: "$610,000",
-    priceVal: 610000,
+    price: "Rs. 6.1 Crore",
+    priceVal: 61000000,
     location: "Karachi",
     image: project_img_6,
     category: "Penthouse",

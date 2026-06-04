@@ -63,7 +63,7 @@ function Calculator() {
   }
 
   return (
-    <div className="bg-luxury-bg text-white py-24 px-6 md:px-12 lg:px-24 w-full relative overflow-hidden" id="Calculator">
+    <div className="bg-luxury-bg text-luxury-text py-24 px-6 md:px-12 lg:px-24 w-full relative overflow-hidden" id="Calculator">
       {/* Background glow */}
       <div className="absolute top-1/2 right-0 w-80 h-80 bg-luxury-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -82,7 +82,7 @@ function Calculator() {
             Financing <span className="text-gradient-gold font-light">Estimator</span>
           </h1>
           <div className="h-1 w-20 bg-gradient-to-r from-luxury-accent to-amber-500 mx-auto mt-4 rounded-full"></div>
-          <p className="text-gray-400 mt-6 max-w-md mx-auto text-sm sm:text-base font-light">
+          <p className="text-luxury-muted mt-6 max-w-md mx-auto text-sm sm:text-base font-light">
             Plan your investment. Adjust home valuations, loan terms, and interest factors to preview your estimated monthly payouts in PKR.
           </p>
         </motion.div>
@@ -96,13 +96,13 @@ function Calculator() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7 bg-luxury-card border border-white/5 rounded-2xl p-6 md:p-8 flex flex-col justify-between"
+            className="lg:col-span-7 bg-luxury-card border border-luxury-border rounded-2xl p-6 md:p-8 flex flex-col justify-between"
           >
             <div className="space-y-6">
               {/* Home Price */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium text-gray-300">Property Valuation</span>
+                  <span className="text-sm font-medium text-luxury-muted">Property Valuation</span>
                   <span className="text-lg font-bold text-luxury-accent">{formatCurrency(homePrice)}</span>
                 </div>
                 <input 
@@ -112,15 +112,15 @@ function Calculator() {
                   step="500000"
                   value={homePrice}
                   onChange={(e) => setHomePrice(Number(e.target.value))}
-                  className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-luxury-accent"
+                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-lg appearance-none cursor-pointer accent-luxury-accent"
                 />
               </div>
 
               {/* Down Payment Pct */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium text-gray-300">Down Payment ({downPayPct}%)</span>
-                  <span className="text-sm font-semibold text-gray-400">
+                  <span className="text-sm font-medium text-luxury-muted">Down Payment ({downPayPct}%)</span>
+                  <span className="text-sm font-semibold text-luxury-muted">
                     {formatCurrency(homePrice * (downPayPct / 100))}
                   </span>
                 </div>
@@ -131,14 +131,14 @@ function Calculator() {
                   step="1"
                   value={downPayPct}
                   onChange={(e) => setDownPayPct(Number(e.target.value))}
-                  className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-luxury-accent"
+                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-lg appearance-none cursor-pointer accent-luxury-accent"
                 />
               </div>
 
               {/* Interest Rate */}
               <div>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium text-gray-300">Annual Interest Rate (KIBOR + Margin)</span>
+                  <span className="text-sm font-medium text-luxury-muted">Annual Interest Rate (KIBOR + Margin)</span>
                   <span className="text-lg font-bold text-luxury-accent">{interestRate}%</span>
                 </div>
                 <input 
@@ -148,20 +148,20 @@ function Calculator() {
                   step="0.5"
                   value={interestRate}
                   onChange={(e) => setInterestRate(Number(e.target.value))}
-                  className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-luxury-accent"
+                  className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-lg appearance-none cursor-pointer accent-luxury-accent"
                 />
               </div>
 
               {/* Loan Term */}
               <div>
-                <span className="block text-sm font-medium text-gray-300 mb-3">Amortization Period</span>
+                <span className="block text-sm font-medium text-luxury-muted mb-3">Amortization Period</span>
                 <div className="grid grid-cols-2 gap-4">
                   <button 
                     onClick={() => setLoanTerm(15)}
                     className={`py-3 rounded-xl font-semibold uppercase tracking-wider text-xs border transition-all cursor-pointer ${
                       loanTerm === 15 
                         ? 'bg-gradient-to-r from-luxury-accent to-amber-500 text-black border-transparent shadow shadow-luxury-glow'
-                        : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'
+                        : 'bg-luxury-bg border-luxury-border text-luxury-text hover:bg-luxury-card'
                     }`}
                   >
                     15 Years
@@ -171,7 +171,7 @@ function Calculator() {
                     className={`py-3 rounded-xl font-semibold uppercase tracking-wider text-xs border transition-all cursor-pointer ${
                       loanTerm === 20 
                         ? 'bg-gradient-to-r from-luxury-accent to-amber-500 text-black border-transparent shadow shadow-luxury-glow'
-                        : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'
+                        : 'bg-luxury-bg border-luxury-border text-luxury-text hover:bg-luxury-card'
                     }`}
                   >
                     20 Years
@@ -180,7 +180,7 @@ function Calculator() {
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-xs text-gray-400">
+            <div className="mt-8 pt-6 border-t border-luxury-border flex items-center justify-between text-xs text-luxury-muted">
               <span>* Includes Property Tax (estimated at 1.0%)</span>
               <span>* Includes Takaful / Insurance (Rs. 5,000/mo)</span>
             </div>
@@ -192,20 +192,20 @@ function Calculator() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-5 bg-gradient-to-br from-luxury-card to-slate-900 border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between shadow-2xl relative"
+            className="lg:col-span-5 bg-gradient-to-br from-luxury-card to-luxury-bg/50 border border-luxury-border rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between shadow-2xl relative"
           >
             {/* Top Info */}
             <div className="text-center w-full">
-              <h3 className="text-xs uppercase font-bold text-gray-400 tracking-wider mb-2">Estimated Payments</h3>
+              <h3 className="text-xs uppercase font-bold text-luxury-muted tracking-wider mb-2">Estimated Payments</h3>
               <p className="text-4xl font-extrabold text-gradient-gold mb-1">{formatCurrency(totalPayment)}</p>
-              <p className="text-xs text-gray-400 font-light">Per Month Total</p>
+              <p className="text-xs text-luxury-muted font-light">Per Month Total</p>
             </div>
 
             {/* SVG Donut Chart */}
             <div className="relative my-8 flex items-center justify-center">
               <svg width="220" height="220" viewBox="0 0 120 120" className="transform -rotate-90">
                 {/* Background circle */}
-                <circle cx="60" cy="60" r={radius} fill="transparent" stroke="rgba(255,255,255,0.05)" strokeWidth="10" />
+                <circle cx="60" cy="60" r={radius} fill="transparent" stroke="var(--luxury-border)" strokeWidth="10" />
                 
                 {/* P&I Circle */}
                 <circle 
@@ -249,8 +249,8 @@ function Calculator() {
               
               {/* Inside Chart Text */}
               <div className="absolute text-center">
-                <span className="block text-[10px] uppercase font-bold tracking-widest text-gray-400">Principal</span>
-                <span className="block text-lg font-bold text-white">{(pctPI * 100).toFixed(0)}%</span>
+                <span className="block text-[10px] uppercase font-bold tracking-widest text-luxury-muted">Principal</span>
+                <span className="block text-lg font-bold text-luxury-text">{(pctPI * 100).toFixed(0)}%</span>
               </div>
             </div>
 
@@ -260,27 +260,27 @@ function Calculator() {
               <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-luxury-accent"></span>
-                  <span className="text-gray-300 font-light">Principal & Interest</span>
+                  <span className="text-luxury-muted font-light">Principal & Interest</span>
                 </div>
-                <span className="font-semibold text-white">{formatCurrency(monthlyPI)}</span>
+                <span className="font-semibold text-luxury-text">{formatCurrency(monthlyPI)}</span>
               </div>
               
               {/* Taxes */}
               <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-blue-500"></span>
-                  <span className="text-gray-300 font-light">Estimated Property Tax</span>
+                  <span className="text-luxury-muted font-light">Estimated Property Tax</span>
                 </div>
-                <span className="font-semibold text-white">{formatCurrency(monthlyTax)}</span>
+                <span className="font-semibold text-luxury-text">{formatCurrency(monthlyTax)}</span>
               </div>
 
               {/* Insurance */}
               <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
-                  <span className="text-gray-300 font-light">Takaful / Insurance</span>
+                  <span className="text-luxury-muted font-light">Takaful / Insurance</span>
                 </div>
-                <span className="font-semibold text-white">{formatCurrency(monthlyInsurance)}</span>
+                <span className="font-semibold text-luxury-text">{formatCurrency(monthlyInsurance)}</span>
               </div>
             </div>
 

@@ -76,7 +76,7 @@ function Contact() {
   ]
 
   return (
-    <div className='bg-luxury-bg text-white py-24 px-6 md:px-12 lg:px-24 w-full relative overflow-hidden' id='contact'>
+    <div className='bg-luxury-bg text-luxury-text py-24 px-6 md:px-12 lg:px-24 w-full relative overflow-hidden' id='contact'>
       {/* Background glow */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-luxury-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -95,7 +95,7 @@ function Contact() {
             Contact <span className="text-gradient-gold font-light">With Us</span>
           </h1>
           <div className="h-1 w-20 bg-gradient-to-r from-luxury-accent to-amber-500 mx-auto mt-4 rounded-full"></div>
-          <p className="text-gray-400 mt-6 max-w-md mx-auto text-sm sm:text-base font-light">
+          <p className="text-luxury-muted mt-6 max-w-md mx-auto text-sm sm:text-base font-light">
             Ready to make a move? Let's build your future together. Contact our client support team for private consultations.
           </p>
         </motion.div>
@@ -113,20 +113,20 @@ function Contact() {
           >
             <div className="space-y-6">
               <h3 className="text-2xl font-bold uppercase tracking-wide text-gradient-white">Concierge Office</h3>
-              <p className="text-gray-400 text-sm font-light leading-relaxed">
+              <p className="text-luxury-muted text-sm font-light leading-relaxed">
                 Connect with our expert consulting teams. Fill out the private inquiry form, or visit our central offices for direct investment assessments.
               </p>
             </div>
 
             <div className="space-y-6">
               {contactInfo.map((info, idx) => (
-                <div key={idx} className="flex gap-4 items-start p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm">
-                  <div className="p-2.5 rounded-lg bg-white/5 border border-white/10 mt-0.5">
+                <div key={idx} className="flex gap-4 items-start p-4 rounded-xl border border-luxury-border bg-luxury-card shadow-sm">
+                  <div className="p-2.5 rounded-lg bg-luxury-bg border border-luxury-border mt-0.5">
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white mb-1">{info.title}</h4>
-                    <p className="text-gray-400 text-xs font-light leading-relaxed">{info.details}</p>
+                    <h4 className="text-sm font-bold text-luxury-text mb-1">{info.title}</h4>
+                    <p className="text-luxury-muted text-xs font-light leading-relaxed">{info.details}</p>
                   </div>
                 </div>
               ))}
@@ -139,7 +139,7 @@ function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7 bg-luxury-card border border-white/5 rounded-2xl p-6 md:p-8 shadow-2xl border-glow"
+            className="lg:col-span-7 bg-luxury-card border border-luxury-border rounded-2xl p-6 md:p-8 shadow-2xl border-glow"
           >
             <h3 className="text-xl font-bold uppercase mb-6 text-gradient-white">Send A Secure Message</h3>
             
@@ -149,7 +149,7 @@ function Contact() {
                 <div className="flex flex-col">
                   <label className="text-xs uppercase font-bold text-luxury-accent tracking-wider mb-2">Your Name</label>
                   <input 
-                    className='w-full bg-white/5 border border-white/10 focus:border-luxury-accent rounded-xl py-3 px-4 text-sm text-white focus:outline-none transition-colors' 
+                    className='w-full bg-luxury-bg border border-luxury-border focus:border-luxury-accent focus:bg-luxury-card rounded-xl py-3 px-4 text-sm text-luxury-text focus:outline-none transition-all' 
                     type="text" 
                     name='Name' 
                     placeholder='John Doe' 
@@ -163,7 +163,7 @@ function Contact() {
                 <div className="flex flex-col">
                   <label className="text-xs uppercase font-bold text-luxury-accent tracking-wider mb-2">Your Email</label>
                   <input 
-                    className='w-full bg-white/5 border border-white/10 focus:border-luxury-accent rounded-xl py-3 px-4 text-sm text-white focus:outline-none transition-colors' 
+                    className='w-full bg-luxury-bg border border-luxury-border focus:border-luxury-accent focus:bg-luxury-card rounded-xl py-3 px-4 text-sm text-luxury-text focus:outline-none transition-all' 
                     type="email" 
                     name='Email' 
                     placeholder='john@example.com' 
@@ -178,7 +178,7 @@ function Contact() {
               <div className="flex flex-col">
                 <label className="text-xs uppercase font-bold text-luxury-accent tracking-wider mb-2">Message Description</label>
                 <textarea 
-                  className='w-full bg-white/5 border border-white/10 focus:border-luxury-accent rounded-xl py-3 px-4 text-sm text-white focus:outline-none h-40 resize-none transition-colors' 
+                  className='w-full bg-luxury-bg border border-luxury-border focus:border-luxury-accent focus:bg-luxury-card rounded-xl py-3 px-4 text-sm text-luxury-text focus:outline-none h-40 resize-none transition-all' 
                   name="Message" 
                   placeholder="Tell us about your property goals, locations, or investment preferences..." 
                   required

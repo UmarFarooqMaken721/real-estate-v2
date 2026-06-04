@@ -51,7 +51,7 @@ function About() {
   ]
 
   return (
-    <div className='bg-luxury-bg text-white py-24 px-6 md:px-12 lg:px-24 w-full relative overflow-hidden' id='About'>
+    <div className='bg-luxury-bg text-luxury-text py-24 px-6 md:px-12 lg:px-24 w-full relative overflow-hidden' id='About'>
       
       {/* Background glow accents */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-luxury-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
@@ -72,7 +72,7 @@ function About() {
             About <span className="text-gradient-gold font-light">Our Brand</span>
           </h1>
           <div className="h-1 w-20 bg-gradient-to-r from-luxury-accent to-amber-500 mx-auto mt-4 rounded-full"></div>
-          <p className="text-gray-400 mt-6 max-w-md mx-auto text-sm sm:text-base font-light">
+          <p className="text-luxury-muted mt-6 max-w-md mx-auto text-sm sm:text-base font-light">
             Passionate About Properties, Dedicated to Your Vision. Discover the standards that define our reputation.
           </p>
         </motion.div>
@@ -88,7 +88,7 @@ function About() {
             transition={{ duration: 0.8 }}
             className="w-full lg:w-1/2 flex justify-center items-center"
           >
-            <div className="relative p-3 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm max-w-md md:max-w-lg">
+            <div className="relative p-3 rounded-2xl border border-luxury-border bg-luxury-card/40 backdrop-blur-sm max-w-md md:max-w-lg">
               {/* Outer decorative borders */}
               <div className="absolute -top-3 -left-3 w-12 h-12 border-t-2 border-l-2 border-luxury-accent"></div>
               <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-luxury-accent"></div>
@@ -111,10 +111,10 @@ function About() {
               className="mb-8"
             >
               <h3 className="text-2xl font-bold uppercase mb-4 text-gradient-white">Crafting Masterpieces Since 2016</h3>
-              <p className="text-gray-400 font-light leading-relaxed mb-6">
+              <p className="text-luxury-muted font-light leading-relaxed mb-6">
                 We bring decades of collective expertise to every project — from premium urban high-rises to custom-tailored residential estates. Our commitment is direct: deliver magnificent architectural spaces that inspire, built with structural excellence and customized for premium lifestyle standards.
               </p>
-              <p className="text-gray-400 font-light leading-relaxed">
+              <p className="text-luxury-muted font-light leading-relaxed">
                 Whether you seek an investment yield-focused property or a private residential oasis, our consulting teams align with your requirements to procure elite real estate assets.
               </p>
             </motion.div>
@@ -128,9 +128,9 @@ function About() {
               className="grid grid-cols-2 gap-6 w-full"
             >
               {stats.map((stat, i) => (
-                <div key={i} className="p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm hover:border-luxury-accent/30 transition-all duration-300">
+                <div key={i} className="p-4 rounded-xl border border-luxury-border bg-luxury-card backdrop-blur-sm hover:border-luxury-accent/30 transition-all duration-300">
                   <p className="text-3xl sm:text-4xl font-extrabold text-gradient-gold mb-1">{stat.value}</p>
-                  <p className="text-xs uppercase font-medium tracking-wide text-gray-400">{stat.label}</p>
+                  <p className="text-xs uppercase font-medium tracking-wide text-luxury-muted">{stat.label}</p>
                 </div>
               ))}
             </motion.div>
@@ -158,13 +158,13 @@ function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{ y: -6, borderColor: "rgba(212, 175, 55, 0.4)" }}
-                className="p-6 rounded-2xl border border-white/5 bg-luxury-card hover:bg-white/5 transition-all duration-300 flex flex-col items-start border-glow cursor-default"
+                className="p-6 rounded-2xl border border-luxury-border bg-luxury-card hover:bg-luxury-bg/50 transition-all duration-300 flex flex-col items-start border-glow cursor-default"
               >
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10 mb-5">
+                <div className="p-3 rounded-xl bg-luxury-bg border border-luxury-border mb-5">
                   {feat.icon}
                 </div>
-                <h4 className="text-lg font-bold text-white mb-2">{feat.title}</h4>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{feat.description}</p>
+                <h4 className="text-lg font-bold text-luxury-text mb-2">{feat.title}</h4>
+                <p className="text-luxury-muted text-sm font-light leading-relaxed">{feat.description}</p>
               </motion.div>
             ))}
           </div>

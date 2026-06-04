@@ -63,7 +63,7 @@ const Projects = ({ searchFilter }) => {
   }
 
   return (
-    <div className='bg-luxury-bg text-white py-24 px-6 md:px-12 lg:px-24 w-full relative overflow-hidden' id='Projects'>
+    <div className='bg-luxury-bg text-luxury-text py-24 px-6 md:px-12 lg:px-24 w-full relative overflow-hidden' id='Projects'>
       {/* Background glow accents */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -82,7 +82,7 @@ const Projects = ({ searchFilter }) => {
             Projects <span className="text-gradient-gold font-light">Completed</span>
           </h1>
           <div className="h-1 w-20 bg-gradient-to-r from-luxury-accent to-amber-500 mx-auto mt-4 rounded-full"></div>
-          <p className="text-gray-400 mt-6 max-w-md mx-auto text-sm sm:text-base font-light">
+          <p className="text-luxury-muted mt-6 max-w-md mx-auto text-sm sm:text-base font-light">
             Explore our curated selection of properties. Select categories or click on any property to see key specs, amenities, and details.
           </p>
         </motion.div>
@@ -102,7 +102,7 @@ const Projects = ({ searchFilter }) => {
               className={`px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider border transition-all duration-300 cursor-pointer ${
                 selectedTab === cat
                   ? 'bg-gradient-to-r from-luxury-accent to-amber-500 text-black border-transparent shadow-lg shadow-luxury-glow'
-                  : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 text-gray-300'
+                  : 'bg-luxury-card border-luxury-border hover:bg-luxury-accent/10 hover:border-luxury-accent/30 text-luxury-muted'
               }`}
             >
               {cat === "All" ? "All Properties" : `${cat}s`}
@@ -126,7 +126,7 @@ const Projects = ({ searchFilter }) => {
                 transition={{ duration: 0.4 }}
                 whileHover={{ y: -8 }}
                 onClick={() => setSelectedProject(project)}
-                className="group relative bg-luxury-card rounded-2xl border border-white/5 overflow-hidden border-glow shadow-xl cursor-pointer"
+                className="group relative bg-luxury-card rounded-2xl border border-luxury-border overflow-hidden border-glow shadow-xl cursor-pointer"
               >
                 {/* Image Wrap */}
                 <div className="relative overflow-hidden aspect-[4/3]">
@@ -158,7 +158,7 @@ const Projects = ({ searchFilter }) => {
                     <span className="text-lg font-bold text-luxury-accent">{project.price}</span>
                   </div>
 
-                  <p className="text-gray-400 text-sm font-light mb-4 flex items-center gap-1.5">
+                  <p className="text-luxury-muted text-sm font-light mb-4 flex items-center gap-1.5">
                     <svg className="w-4 h-4 text-luxury-accent/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -167,7 +167,7 @@ const Projects = ({ searchFilter }) => {
                   </p>
 
                   {/* Micro Specs */}
-                  <div className="flex items-center justify-between border-t border-white/5 pt-4 text-xs text-gray-400 font-medium">
+                  <div className="flex items-center justify-between border-t border-luxury-border pt-4 text-xs text-luxury-muted font-medium">
                     <span className="flex items-center gap-1">🛌 {project.beds} Beds</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-white/10"></span>
                     <span className="flex items-center gap-1">🛁 {project.baths} Baths</span>
@@ -185,13 +185,13 @@ const Projects = ({ searchFilter }) => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-20 bg-luxury-card rounded-2xl border border-white/5"
+            className="text-center py-20 bg-luxury-card rounded-2xl border border-luxury-border"
           >
             <svg className="w-12 h-12 text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
             <h3 className="text-xl font-bold mb-2">No Properties Found</h3>
-            <p className="text-gray-400 text-sm font-light">Adjust your quick search parameters or try another tab filter.</p>
+            <p className="text-luxury-muted text-sm font-light">Adjust your quick search parameters or try another tab filter.</p>
           </motion.div>
         )}
 
@@ -210,7 +210,7 @@ const Projects = ({ searchFilter }) => {
               initial={{ scale: 0.9, y: 30 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 30 }}
-              className="bg-luxury-card border border-white/10 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl relative flex flex-col md:flex-row"
+              className="bg-luxury-card border border-luxury-border rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl relative flex flex-col md:flex-row text-luxury-text"
             >
               {/* Close Button */}
               <button
@@ -245,29 +245,29 @@ const Projects = ({ searchFilter }) => {
                 {/* Description */}
                 <div className="mb-6">
                   <h4 className="text-xs uppercase font-bold text-luxury-accent tracking-widest mb-2">Overview</h4>
-                  <p className="text-gray-300 text-sm font-light leading-relaxed">{selectedProject.description}</p>
+                  <p className="text-luxury-muted text-sm font-light leading-relaxed">{selectedProject.description}</p>
                 </div>
 
                 {/* Specs Grid */}
-                <div className="grid grid-cols-3 gap-4 p-4 rounded-xl bg-white/5 border border-white/5 mb-6 text-center">
+                <div className="grid grid-cols-3 gap-4 p-4 rounded-xl bg-luxury-bg border border-luxury-border mb-6 text-center">
                   <div>
                     <span className="block text-lg">🛌</span>
-                    <span className="block text-sm font-bold text-white mt-1">{selectedProject.beds} Beds</span>
+                    <span className="block text-sm font-bold text-luxury-text mt-1">{selectedProject.beds} Beds</span>
                   </div>
-                  <div className="border-x border-white/5">
+                  <div className="border-x border-luxury-border">
                     <span className="block text-lg">🛁</span>
-                    <span className="block text-sm font-bold text-white mt-1">{selectedProject.baths} Baths</span>
+                    <span className="block text-sm font-bold text-luxury-text mt-1">{selectedProject.baths} Baths</span>
                   </div>
                   <div>
                     <span className="block text-lg">📏</span>
-                    <span className="block text-sm font-bold text-white mt-1">{selectedProject.sqft} sqft</span>
+                    <span className="block text-sm font-bold text-luxury-text mt-1">{selectedProject.sqft} sqft</span>
                   </div>
                 </div>
 
                 {/* Amenities */}
                 <div className="mb-8">
                   <h4 className="text-xs uppercase font-bold text-luxury-accent tracking-widest mb-3">Amenities</h4>
-                  <ul className="grid grid-cols-2 gap-2 text-xs text-gray-300">
+                  <ul className="grid grid-cols-2 gap-2 text-xs text-luxury-muted">
                     {selectedProject.amenities.map((item, idx) => (
                       <li key={idx} className="flex items-center gap-2">
                         <span className="text-luxury-accent">✔</span>
@@ -278,7 +278,7 @@ const Projects = ({ searchFilter }) => {
                 </div>
 
                 {/* Enquiry Form */}
-                <div className="border-t border-white/10 pt-6">
+                <div className="border-t border-luxury-border pt-6">
                   <h4 className="text-xs uppercase font-bold text-luxury-accent tracking-widest mb-4">Request Private Tour</h4>
                   {enquirySubmitted ? (
                     <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-center text-sm font-semibold">
@@ -292,7 +292,7 @@ const Projects = ({ searchFilter }) => {
                         required
                         value={enquiryForm.name}
                         onChange={(e) => setEnquiryForm({...enquiryForm, name: e.target.value})}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-luxury-accent transition-colors"
+                        className="w-full bg-luxury-bg border border-luxury-border rounded-lg p-2.5 text-xs text-luxury-text focus:outline-none focus:border-luxury-accent focus:bg-luxury-card transition-all"
                       />
                       <input
                         type="email"
@@ -300,7 +300,7 @@ const Projects = ({ searchFilter }) => {
                         required
                         value={enquiryForm.email}
                         onChange={(e) => setEnquiryForm({...enquiryForm, email: e.target.value})}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-luxury-accent transition-colors"
+                        className="w-full bg-luxury-bg border border-luxury-border rounded-lg p-2.5 text-xs text-luxury-text focus:outline-none focus:border-luxury-accent focus:bg-luxury-card transition-all"
                       />
                       <textarea
                         placeholder="I'm interested in details for this property..."
@@ -308,7 +308,7 @@ const Projects = ({ searchFilter }) => {
                         required
                         value={enquiryForm.message}
                         onChange={(e) => setEnquiryForm({...enquiryForm, message: e.target.value})}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-luxury-accent resize-none transition-colors"
+                        className="w-full bg-luxury-bg border border-luxury-border rounded-lg p-2.5 text-xs text-luxury-text focus:outline-none focus:border-luxury-accent focus:bg-luxury-card resize-none transition-all"
                       ></textarea>
                       <button
                         type="submit"

@@ -1,13 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --luxury-bg: #f8fafc;
+  --luxury-card: #ffffff;
+  --luxury-accent: #b8860b;
+  --luxury-accent-hover: #d4af37;
+  --luxury-border: rgba(15, 23, 42, 0.08);
+  --luxury-glow: rgba(184, 134, 11, 0.1);
+  --luxury-text: #0f172a;
+  --luxury-muted: #475569;
+  
+  --luxury-text-gradient-start: #0f172a;
+  --luxury-text-gradient-mid: #1e293b;
+  --luxury-text-gradient-end: #475569;
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(15, 23, 42, 0.08);
+}
+
+.dark {
+  --luxury-bg: #070a13;
+  --luxury-card: #0e1322;
+  --luxury-accent: #d4af37;
+  --luxury-accent-hover: #f3cd57;
+  --luxury-border: rgba(255, 255, 255, 0.08);
+  --luxury-glow: rgba(212, 175, 55, 0.15);
+  --luxury-text: #ffffff;
+  --luxury-muted: #94a3b8;
+  
+  --luxury-text-gradient-start: #ffffff;
+  --luxury-text-gradient-mid: #e2e8f0;
+  --luxury-text-gradient-end: #94a3b8;
+  
+  --glass-bg: rgba(14, 19, 34, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
 @theme {
-  --color-luxury-bg: #070a13;
-  --color-luxury-card: #0e1322;
-  --color-luxury-accent: #d4af37; /* Luxury Gold */
-  --color-luxury-accent-hover: #f3cd57;
-  --color-luxury-border: rgba(255, 255, 255, 0.08);
-  --color-luxury-glow: rgba(212, 175, 55, 0.15);
+  --color-luxury-bg: var(--luxury-bg);
+  --color-luxury-card: var(--luxury-card);
+  --color-luxury-accent: var(--luxury-accent);
+  --color-luxury-accent-hover: var(--luxury-accent-hover);
+  --color-luxury-border: var(--luxury-border);
+  --color-luxury-glow: var(--luxury-glow);
+  --color-luxury-text: var(--luxury-text);
+  --color-luxury-muted: var(--luxury-muted);
+}
+
+body {
+  background-color: var(--luxury-bg);
+  color: var(--luxury-text);
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease;
 }
 
 * {
@@ -36,10 +82,10 @@
 
 /* Glassmorphism utility */
 .glassmorphism {
-  background: rgba(14, 19, 34, 0.7);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
 }
 
 .text-gradient-gold {
@@ -49,7 +95,7 @@
 }
 
 .text-gradient-white {
-  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
+  background: linear-gradient(135deg, var(--luxury-text-gradient-start) 0%, var(--luxury-text-gradient-mid) 50%, var(--luxury-text-gradient-end) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
