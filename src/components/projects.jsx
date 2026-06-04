@@ -7,12 +7,22 @@ const Projects = ({ searchFilter }) => {
   const [selectedTab, setSelectedTab] = useState("All")
   const [filteredProjects, setFilteredProjects] = useState(projectsData)
   const [selectedProject, setSelectedProject] = useState(null)
-  
+
   // Mortgage / Enquiry state inside modal
   const [enquirySubmitted, setEnquirySubmitted] = useState(false)
   const [enquiryForm, setEnquiryForm] = useState({ name: '', email: '', message: '' })
 
-  // Sync tab filter and search filter
+  // Sync tab with searchFilter category
+  useEffect(() => {
+    if (searchFilter && searchFilter.category) {
+      setSelectedTab(searchFilter.category)
+    } else if (!searchFilter) {
+      // searchFilter cleared — reset tab to All
+      setSelectedTab("All")
+    }
+  }, [searchFilter])
+
+  // Apply all filters whenever tab or searchFilter changes
   useEffect(() => {
     let result = projectsData
 
@@ -24,10 +34,14 @@ const Projects = ({ searchFilter }) => {
     // Apply Search Header filter
     if (searchFilter) {
       if (searchFilter.location) {
-        result = result.filter(p => p.location.toLowerCase().includes(searchFilter.location.toLowerCase()))
+        result = result.filter(p =>
+          p.location.toLowerCase().includes(searchFilter.location.toLowerCase())
+        )
       }
       if (searchFilter.category && searchFilter.category !== "All") {
-        result = result.filter(p => p.category.toLowerCase() === searchFilter.category.toLowerCase())
+        result = result.filter(p =>
+          p.category.toLowerCase() === searchFilter.category.toLowerCase()
+        )
       }
       if (searchFilter.budget) {
         const budgetVal = parseInt(searchFilter.budget)
@@ -37,13 +51,6 @@ const Projects = ({ searchFilter }) => {
 
     setFilteredProjects(result)
   }, [selectedTab, searchFilter])
-
-  // Reset tab selection if search category is changed from header
-  useEffect(() => {
-    if (searchFilter && searchFilter.category) {
-      setSelectedTab(searchFilter.category)
-    }
-  }, [searchFilter])
 
   const handleEnquirySubmit = (e) => {
     e.preventDefault()
@@ -61,7 +68,7 @@ const Projects = ({ searchFilter }) => {
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className='container mx-auto relative z-10'>
-        
+
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -81,7 +88,7 @@ const Projects = ({ searchFilter }) => {
         </motion.div>
 
         {/* Tab Filters */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -93,7 +100,7 @@ const Projects = ({ searchFilter }) => {
               key={cat}
               onClick={() => setSelectedTab(cat)}
               className={`px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider border transition-all duration-300 cursor-pointer ${
-                selectedTab === cat 
+                selectedTab === cat
                   ? 'bg-gradient-to-r from-luxury-accent to-amber-500 text-black border-transparent shadow-lg shadow-luxury-glow'
                   : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 text-gray-300'
               }`}
@@ -104,12 +111,12 @@ const Projects = ({ searchFilter }) => {
         </motion.div>
 
         {/* Grid Container */}
-        <motion.div 
+        <motion.div
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px]"
         >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.map((project) => (
               <motion.div
                 layout
                 key={project.title}
@@ -123,16 +130,16 @@ const Projects = ({ searchFilter }) => {
               >
                 {/* Image Wrap */}
                 <div className="relative overflow-hidden aspect-[4/3]">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
                   {/* Category tag */}
                   <span className="absolute top-4 left-4 px-3 py-1 text-[10px] uppercase font-bold tracking-widest bg-black/60 backdrop-blur-md text-luxury-accent rounded-full border border-luxury-accent/30">
                     {project.category}
                   </span>
-                  
+
                   {/* Glassmorphic hover overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-6">
                     <span className="text-sm font-semibold tracking-wider text-luxury-accent flex items-center gap-1.5 uppercase">
@@ -150,7 +157,7 @@ const Projects = ({ searchFilter }) => {
                     <h3 className="text-xl font-bold group-hover:text-luxury-accent transition-colors duration-300">{project.title}</h3>
                     <span className="text-lg font-bold text-luxury-accent">{project.price}</span>
                   </div>
-                  
+
                   <p className="text-gray-400 text-sm font-light mb-4 flex items-center gap-1.5">
                     <svg className="w-4 h-4 text-luxury-accent/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -161,17 +168,11 @@ const Projects = ({ searchFilter }) => {
 
                   {/* Micro Specs */}
                   <div className="flex items-center justify-between border-t border-white/5 pt-4 text-xs text-gray-400 font-medium">
-                    <span className="flex items-center gap-1">
-                      🛌 {project.beds} Beds
-                    </span>
+                    <span className="flex items-center gap-1">🛌 {project.beds} Beds</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-white/10"></span>
-                    <span className="flex items-center gap-1">
-                      🛁 {project.baths} Baths
-                    </span>
+                    <span className="flex items-center gap-1">🛁 {project.baths} Baths</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-white/10"></span>
-                    <span className="flex items-center gap-1">
-                      📏 {project.sqft} Sq Ft
-                    </span>
+                    <span className="flex items-center gap-1">📏 {project.sqft} Sq Ft</span>
                   </div>
                 </div>
               </motion.div>
@@ -181,7 +182,7 @@ const Projects = ({ searchFilter }) => {
 
         {/* Empty state */}
         {filteredProjects.length === 0 && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center py-20 bg-luxury-card rounded-2xl border border-white/5"
@@ -199,20 +200,20 @@ const Projects = ({ searchFilter }) => {
       {/* Property Details Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 overflow-y-auto"
           >
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.9, y: 30 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 30 }}
               className="bg-luxury-card border border-white/10 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl relative flex flex-col md:flex-row"
             >
               {/* Close Button */}
-              <button 
+              <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 border border-white/10 text-white hover:bg-luxury-accent hover:text-black transition-all cursor-pointer"
                 aria-label="Close Modal"
@@ -222,11 +223,11 @@ const Projects = ({ searchFilter }) => {
                 </svg>
               </button>
 
-              {/* Left Column: Image and floating tags */}
+              {/* Left Column: Image */}
               <div className="w-full md:w-1/2 relative bg-black/40 flex items-center justify-center min-h-[300px] md:min-h-full">
-                <img 
-                  src={selectedProject.image} 
-                  alt={selectedProject.title} 
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-8 flex flex-col justify-end">
@@ -238,9 +239,9 @@ const Projects = ({ searchFilter }) => {
                 </div>
               </div>
 
-              {/* Right Column: Key Details & Enquiry form */}
+              {/* Right Column: Details & Enquiry */}
               <div className="w-full md:w-1/2 p-6 md:p-8 overflow-y-auto max-h-[90vh] md:max-h-[600px] lg:max-h-[700px]">
-                
+
                 {/* Description */}
                 <div className="mb-6">
                   <h4 className="text-xs uppercase font-bold text-luxury-accent tracking-widest mb-2">Overview</h4>
@@ -276,7 +277,7 @@ const Projects = ({ searchFilter }) => {
                   </ul>
                 </div>
 
-                {/* Contact Enquiry Form */}
+                {/* Enquiry Form */}
                 <div className="border-t border-white/10 pt-6">
                   <h4 className="text-xs uppercase font-bold text-luxury-accent tracking-widest mb-4">Request Private Tour</h4>
                   {enquirySubmitted ? (
@@ -285,31 +286,31 @@ const Projects = ({ searchFilter }) => {
                     </div>
                   ) : (
                     <form onSubmit={handleEnquirySubmit} className="space-y-3">
-                      <input 
-                        type="text" 
-                        placeholder="Your Name" 
-                        required 
+                      <input
+                        type="text"
+                        placeholder="Your Name"
+                        required
                         value={enquiryForm.name}
                         onChange={(e) => setEnquiryForm({...enquiryForm, name: e.target.value})}
                         className="w-full bg-white/5 border border-white/10 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-luxury-accent transition-colors"
                       />
-                      <input 
-                        type="email" 
-                        placeholder="Your Email" 
-                        required 
+                      <input
+                        type="email"
+                        placeholder="Your Email"
+                        required
                         value={enquiryForm.email}
                         onChange={(e) => setEnquiryForm({...enquiryForm, email: e.target.value})}
                         className="w-full bg-white/5 border border-white/10 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-luxury-accent transition-colors"
                       />
-                      <textarea 
-                        placeholder="I'm interested in details for this property..." 
+                      <textarea
+                        placeholder="I'm interested in details for this property..."
                         rows="2"
-                        required 
+                        required
                         value={enquiryForm.message}
                         onChange={(e) => setEnquiryForm({...enquiryForm, message: e.target.value})}
                         className="w-full bg-white/5 border border-white/10 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-luxury-accent resize-none transition-colors"
                       ></textarea>
-                      <button 
+                      <button
                         type="submit"
                         className="w-full py-2.5 rounded-lg bg-gradient-to-r from-luxury-accent to-amber-500 text-black font-semibold text-xs tracking-wider uppercase shadow hover:shadow-luxury-glow transition-all cursor-pointer"
                       >

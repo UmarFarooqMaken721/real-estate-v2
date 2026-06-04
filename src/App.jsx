@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className='w-full overflow-hidden bg-luxury-bg text-white'>
-      <ToastContainer 
+      <ToastContainer
         position="bottom-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -29,6 +29,7 @@ function App() {
         pauseOnHover
         theme="dark"
       />
+
       <Header onSearch={setSearchFilter} />
       <About />
       <Projects searchFilter={searchFilter} />
