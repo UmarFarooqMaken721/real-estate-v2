@@ -4,72 +4,100 @@ import { motion } from 'motion/react'
 
 function Testimonial() {
   return (
-    <div className='container mx-auto py-10 lg:px-32 w-full overflow-hidden' id='Testimonials'>
+    <div className='bg-luxury-bg text-white py-24 px-6 md:px-12 lg:px-24 w-full relative overflow-hidden' id='Testimonials'>
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-      <motion.h1
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        viewport={{ once: false }}
-        className='text-2xl sm:text-4xl font-bold mb-2 text-center'
-      >
-        Customer <span className='underline underline-offset-4 decoration-1 font-light'>Testimonials</span>
-      </motion.h1>
+      <div className="container mx-auto relative z-10">
+        
+        {/* Section Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-xs font-bold tracking-widest text-luxury-accent uppercase mb-3">Client Reviews</h2>
+          <h1 className="text-3xl sm:text-5xl font-bold uppercase tracking-tight">
+            Customer <span className="text-gradient-gold font-light">Testimonials</span>
+          </h1>
+          <div className="h-1 w-20 bg-gradient-to-r from-luxury-accent to-amber-500 mx-auto mt-4 rounded-full"></div>
+          <p className="text-gray-400 mt-6 max-w-md mx-auto text-sm sm:text-base font-light">
+            Real stories from property owners and investors who completed their journeys with our dedicated brokerage consulting.
+          </p>
+        </motion.div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: false }}
-        className='text-center text-gray-500 mb-12 max-w-80 mx-auto'
-      >
-        Real Stories From Those Who Found Home With Us
-      </motion.p>
-
-      <div className='grid grid-cols-1 sm:grid-cols-3 gap-8'>
-        {testimonialsData.map((testimonial, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 60, scale: 0.9 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
-            transition={{ duration: 0.5, delay: index * 0.15, ease: 'easeOut' }}
-            viewport={{ once: false }}
-            className='border border-gray-200 shadow-lg rounded px-8 py-10 text-center cursor-default'
-          >
-            <motion.img
-              initial={{ scale: 0, rotate: -180 }}
-              whileInView={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.15 + 0.3, ease: 'backOut' }}
-              viewport={{ once: false }}
-              className='w-20 h-20 rounded-full mx-auto mb-4'
-              src={testimonial.image}
-              alt={testimonial.alt}
-            />
-            <h2 className='text-xl font-semibold text-gray-800 mb-1'>{testimonial.name}</h2>
-            <p className='text-gray-500 text-sm mb-3'>{testimonial.title}</p>
+        {/* Testimonials Grid */}
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+          {testimonialsData.map((testimonial, index) => (
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.15 + 0.5 }}
-              viewport={{ once: false }}
-              className='flex justify-center gap-1 mb-4'
+              key={index}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ y: -8, borderColor: "rgba(212, 175, 55, 0.3)" }}
+              transition={{ duration: 0.5, delay: index * 0.15, ease: 'easeOut' }}
+              viewport={{ once: true }}
+              className='bg-luxury-card border border-white/5 shadow-2xl rounded-2xl px-6 py-10 md:px-8 text-center cursor-default border-glow flex flex-col justify-between items-center relative'
             >
-              {Array.from({ length: testimonial.rating }, (_, i) => (
-                <motion.img
-                  key={i}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.15 + 0.5 + i * 0.08 }}
-                  viewport={{ once: false }}
-                  src={assets.star_icon}
-                  alt="star"
-                />
-              ))}
+              {/* Decorative Quote Mark */}
+              <span className="absolute top-4 left-6 text-7xl font-serif text-white/5 pointer-events-none select-none">“</span>
+              
+              <div>
+                {/* Profile Image with Gold Ring */}
+                <motion.div
+                  initial={{ scale: 0, rotate: -45 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 + 0.2, ease: 'backOut' }}
+                  viewport={{ once: true }}
+                  className="relative mb-6"
+                >
+                  <div className="absolute inset-0 rounded-full border border-luxury-accent/50 scale-105"></div>
+                  <img
+                    className='w-20 h-20 rounded-full mx-auto relative z-10 border-2 border-luxury-card object-cover'
+                    src={testimonial.image}
+                    alt={testimonial.alt}
+                  />
+                </motion.div>
+
+                {/* Name & Title */}
+                <h3 className='text-lg font-bold text-white mb-1'>{testimonial.name}</h3>
+                <p className='text-gray-400 text-xs font-medium uppercase tracking-wider mb-4'>{testimonial.title}</p>
+                
+                {/* Gold Stars */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.15 + 0.4 }}
+                  viewport={{ once: true }}
+                  className='flex justify-center gap-1.5 mb-6'
+                >
+                  {Array.from({ length: 5 }, (_, i) => {
+                    const isFilled = i < testimonial.rating
+                    return (
+                      <motion.img
+                        key={i}
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: index * 0.15 + 0.4 + i * 0.06 }}
+                        viewport={{ once: true }}
+                        src={assets.star_icon}
+                        alt="star"
+                        className={`w-4 h-4 ${isFilled ? 'filter-none' : 'opacity-20 brightness-50'}`}
+                      />
+                    )
+                  })}
+                </motion.div>
+              </div>
+
+              {/* Text */}
+              <p className='text-gray-300 text-sm font-light leading-relaxed italic'>
+                "{testimonial.text}"
+              </p>
             </motion.div>
-            <p className='text-gray-600 text-sm leading-relaxed'>{testimonial.text}</p>
-          </motion.div>
-        ))}
+          ))}
+        </div>
+
       </div>
     </div>
   )

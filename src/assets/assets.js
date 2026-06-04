@@ -33,47 +33,90 @@ export const assets = {
     right_arrow,
 }
 
+export const categories = ["All", "Villa", "Apartment", "Penthouse"];
+
 export const projectsData = [
     {
-      title: "Skyline Haven",
-      price: "$2,50,000",
-      location: "California",
-      image: project_img_1
+      title: "Margalla Heights",
+      price: "Rs. 3.5 Crore",
+      priceVal: 35000000,
+      location: "F-11, Islamabad",
+      image: project_img_1,
+      category: "Apartment",
+      beds: 3,
+      baths: 2,
+      sqft: 1850,
+      description: "A luxury apartment offering breathtaking Margalla Hills views, modern amenities, and spacious open-plan living in the heart of Islamabad.",
+      amenities: ["Margalla View Balcony", "24/7 Security & Concierge", "Infinity Pool Access", "High-speed Elevators", "Smart Home Integration"]
     },
     {
-      title: "Vista Verde",
-      price: "$2,50,000",
-      location: "San Francisco",
-      image: project_img_2
+      title: "Royal Oasis Villa",
+      price: "Rs. 7.5 Crore",
+      priceVal: 75000000,
+      location: "DHA Phase 6, Lahore",
+      image: project_img_2,
+      category: "Villa",
+      beds: 4,
+      baths: 3.5,
+      sqft: 3200,
+      description: "Tucked away in the prestigious DHA Phase 6 Lahore, this modern villa combines contemporary architectural features with exquisite premium finishes.",
+      amenities: ["Solar Energy Systems", "Landscaped Lawn", "Private Basement Lounge", "Gourmet Chef's Kitchen", "Heated Spa Pool"]
     },
     {
-      title: "Serenity Suites",
-      price: "$2,50,000",
-      location: "Chicago",
-      image: project_img_3
+      title: "Clifton Vista Apartments",
+      price: "Rs. 1.8 Crore",
+      priceVal: 18000000,
+      location: "Clifton, Karachi",
+      image: project_img_3,
+      category: "Apartment",
+      beds: 2,
+      baths: 2,
+      sqft: 1200,
+      description: "Experience modern metropolitan coastal living with premium high-tech suites designed for ultimate comfort and sea breeze views.",
+      amenities: ["Fully Equipped Gym", "Rooftop Garden Lounge", "Co-working Space", "Secure Basement Parking", "Standby Generator"]
     },
     {
-      title: "Central Square",
-      price: "$2,50,000",
-      location: "Los Angeles",
-      image: project_img_4
+      title: "Gulberg Residency",
+      price: "Rs. 2.9 Crore",
+      priceVal: 29000000,
+      location: "Gulberg III, Lahore",
+      image: project_img_4,
+      category: "Penthouse",
+      beds: 3,
+      baths: 3,
+      sqft: 2400,
+      description: "A premium penthouse at Lahore's central business district with double-height ceilings, top-tier luxury design, and sweeping views of the city skyline.",
+      amenities: ["Private Elevator Access", "Wrap-around Terrace", "Personal Home Theater", "Outdoor Rooftop BBQ Area", "Exclusive Lounge Membership"]
     },
     {
-      title: "Vista Verde",
-      price: "$2,50,000",
-      location: "San Francisco",
-      image: project_img_5
+      title: "Bahria Meadows",
+      price: "Rs. 9.5 Crore",
+      priceVal: 95000000,
+      location: "Bahria Town, Islamabad",
+      image: project_img_5,
+      category: "Villa",
+      beds: 5,
+      baths: 5,
+      sqft: 4500,
+      description: "An elegant, expansive villa in Bahria Town featuring premium structural designs, hand-crafted marble interiors, and state-of-the-art surveillance.",
+      amenities: ["Golf Course Views", "Infinity Swimming Pool", "CCTV Surveillance", "Private Guest House", "4-Car Covered Garage"]
     },
     {
-      title: "Serenity Suites",
-      price: "$2,50,000",
-      location: "Chicago",
-      image: project_img_6
+      title: "Creek Panorama",
+      price: "Rs. 12 Crore",
+      priceVal: 120000000,
+      location: "DHA Phase 8, Karachi",
+      image: project_img_6,
+      category: "Penthouse",
+      beds: 4,
+      baths: 4.5,
+      sqft: 3800,
+      description: "Ultimate waterfront high-rise luxury featuring floor-to-ceiling glass windows overlooking the Arabian Sea, customized designer finishes, and premium club access.",
+      amenities: ["Arabian Sea Views", "Personal Wellness Spa & Sauna", "Climate Controlled Cellar", "24/7 Security Patrol", "Executive Office Room"]
     },
-    
-  ];
+];
 
-  export const testimonialsData = [
+export const testimonialsData = [
     {
         name: "Donald Jackman",
         title: "Marketing Manager",
